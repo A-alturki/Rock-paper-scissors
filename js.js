@@ -38,15 +38,45 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+
 function game(){
     playerWin = 0;
     computerWin = 0;
 
-    while(computerWin != 5 ||playerWin != 5){
-        let player = windows.prompt("pick your poison...");
-        let pc = getComputerChoice();
+    while(computerWin < 5 && playerWin < 5){
+        let player = window.prompt("pick your poison...");
+        player = player.toLowerCase();
+        while(player != "rock" && player != "paper" && player != "scissors"){
+            player = window.prompt("pick again...");
+            player = player.toLowerCase();
+        }
 
-        playRound(player, pc);
+
+        let pc = getComputerChoice();
+        console.log(pc)
+        let round  = playRound(player, pc);
+        let win = 'win';
+        let lose = 'lose'
+
+        if(round.includes(win)){
+            playerWin++;
+        }
+        else if(round.includes(lose)){
+            computerWin++;
+        }
+
+        console.log(`score is ${playerWin} player vs ${computerWin} pc`);
     }
-    if()
+
+    if(playerWin == 5){
+        console.log("Congrats! You won!!")
+    }
+    else{
+        console.log("rip bozo lost to pc")
+    }
+
+    console.log(`score is ${playerWin} player vs ${computerWin} pc`);
+    
 }
+
+game();
