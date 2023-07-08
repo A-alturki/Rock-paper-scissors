@@ -1,0 +1,45 @@
+.player-choice{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:70px;
+    flex:1;
+    margin-top: 400px;
+}
+.btn{
+    width:20%;
+    height:100% !important;
+    font-size: 30px;
+    margin: 50px;
+}
+
+.something{
+    
+    gap:32px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-choice-left{
+    display:inline;
+}
+
+.show-choice-right{
+    display:inline;
+}
+.choice{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.round{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.game{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

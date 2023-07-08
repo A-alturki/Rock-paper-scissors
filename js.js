@@ -38,45 +38,55 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+    let choice = document.querySelectorAll(".btn");
+    choice.forEach((button) =>{
+        button.addEventListener("click", function(e){
+            if (computerWin < 5 && playerWin < 5){
+            let p = button.textContent;
+            console.log(p);
+            let pc = getComputerChoice();
 
-function game(){
-    playerWin = 0;
-    computerWin = 0;
+            let choiceLeft = document.querySelector(".show-choice-left");
+            choiceLeft.textContent = `you chose: ${p}`;
 
-    while(computerWin < 5 && playerWin < 5){
-        let player = window.prompt("pick your poison...");
-        player = player.toLowerCase();
-        while(player != "rock" && player != "paper" && player != "scissors"){
-            player = window.prompt("pick again...");
-            player = player.toLowerCase();
+            let choiceRight = document.querySelector(".show-choice-right");
+            choiceRight.textContent = `computer chose: ${pc}`;
+
+            console.log(pc);
+            let round  = playRound(p, pc);
+
+            console.log(round);
+            let verdict = document.querySelector(".choice");
+            verdict.textContent = round;
+
+            if(round.includes(win)){
+                playerWin++;
+            }
+            else if(round.includes(lose)){
+                computerWin++;
+            }
+            let roundText = document.querySelector(".round");
+            console.log(`score is ${playerWin} player vs ${computerWin} pc`);
+            roundText.textContent = `score is ${playerWin} player vs ${computerWin} pc`;
+
+            let txt = "";
+            if(playerWin == 5){
+                txt = "Congrats! You won!!";
+            }
+            else if (computerWin == 5){
+                txt = "rip bozo lost to pc";
+            }
+            let game = document.querySelector(".game");
+            game.textContent = txt;
+
+            return round;
         }
-
-
-        let pc = getComputerChoice();
-        console.log(pc)
-        let round  = playRound(player, pc);
-        let win = 'win';
-        let lose = 'lose'
-
-        if(round.includes(win)){
-            playerWin++;
-        }
-        else if(round.includes(lose)){
-            computerWin++;
-        }
-
-        console.log(`score is ${playerWin} player vs ${computerWin} pc`);
-    }
-
-    if(playerWin == 5){
-        console.log("Congrats! You won!!")
-    }
-    else{
-        console.log("rip bozo lost to pc")
-    }
-
-    console.log(`score is ${playerWin} player vs ${computerWin} pc`);
+            
+        })
+    })
     
-}
 
-game();
+let win = 'win';
+let lose = 'lose'
+playerWin = 0;
+computerWin = 0;
